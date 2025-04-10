@@ -375,12 +375,12 @@ layout: section
 # Présentation de la solution
 
 ---
-layout: two-cols
+layout: center
 ---
 
 # Notre solution
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-2">
 <div>
   <div class="p-3 bg-gray-800 bg-opacity-70 rounded-lg shadow-lg mb-3">
     <h3 class="text-lg font-bold flex items-center">
@@ -439,7 +439,7 @@ layout: section
 # Contraintes et réussites
 
 ---
-layout: two-cols
+layout: center
 ---
 
 # Défis rencontrés
