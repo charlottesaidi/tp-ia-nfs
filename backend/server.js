@@ -1,22 +1,30 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
+const analysisRoutes = require('./routes/analysisRoutes');
+const historyRoutes = require('./routes/historyRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
-// Middleware
+// Middlewares
 app.use(cors());
 app.use(express.json());
-
-// Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connecté à MongoDB Atlas'))
-  .catch(err => console.error('Erreur de connexion:', err));
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use('/api', analysisRoutes);
+app.use('/api', historyRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
-});
+// MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('✅ Connecté à MongoDB');
+  app.listen(PORT, () => console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`));
+})
+.catch(err => console.error('Erreur MongoDB :', err));
