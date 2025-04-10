@@ -45,19 +45,25 @@ const HistoryPage = () => {
     <div>
       <ToastContainer />
       <h2>📜 Historique des analyses</h2>
-      <button onClick={() => navigate('/')}>Retour à l'accueil</button>
-      <ul style={{ marginTop: '20px' }}>
-        {history.length > 0 ? (
-          history.map((item, index) => (
-            <li key={index}>
-              Classe : <strong>{item.analyse.className}</strong> — Confiance : <strong>{(item.analyse.confidence * 100).toFixed(2)}%</strong>
-              <button onClick={() => handleDelete(item._id)} className="delete-btn">Supprimer</button>
-            </li>
-          ))
-        ) : (
-          <p>Aucune analyse enregistrée.</p>
-        )}
-      </ul>
+      <table className="table-auto">
+        <tbody>
+          {history.length > 0 ? (
+            history.map((item, index) => (
+              <tr key={index}>
+                <td className="px-2">{item.filepath ? (<img src={`${process.env.REACT_APP_API_URL}/${item.filepath}`} width="50"/>) : null}</td>
+                <td className="px-2">Classe : <strong>{item.analyse.className}</strong> — Confiance : <strong>{(item.analyse.confidence * 100).toFixed(2)}%</strong></td>
+                <td className="px-2"><button onClick={() => handleDelete(item._id)} className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Supprimer</button></td>
+              </tr>
+            ))
+          ) : (
+            <p>Aucune analyse enregistrée.</p>
+          )}
+        </tbody>
+      </table>
+      
+      <div className="flex flex-row justify-end">
+        <button onClick={() => navigate('/')}>Retour à l'accueil</button>
+      </div>
     </div>
   );
 }

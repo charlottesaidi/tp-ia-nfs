@@ -2,7 +2,7 @@ const Analysis = require('../models/Analysis');
 
 exports.saveAnalysis = async (req, res) => {
   try {
-    const { analyse, imageName, imageSize, createdAt } = req.body;
+    const { analyse, imageName, imageSize, filepath, createdAt } = req.body;
 
     if (!analyse) {
       return res.status(400).json({ error: 'Champs manquants dans la requête' });
@@ -12,6 +12,7 @@ exports.saveAnalysis = async (req, res) => {
       analyse, 
       imageName, 
       imageSize, 
+      filepath,
       createdAt
     });
 
@@ -42,3 +43,31 @@ exports.deleteAnalysis = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.saveFile = (req, res) => {
+  try {
+    // Le fichier est déjà sauvegardé par multer
+    // req.file contient les informations sur le fichier uploadé
+    if (!req.file) {
+      return res.status(400).json({ error: 'Aucun fichier reçu' });
+    }
+    
+    // Construire le chemin d'accès au fichier (utilisable depuis le frontend)
+    const filePath = `/uploads/${req.file.filename}`;
+    
+    // Vous pouvez retourner les informations sur le fichier
+    res.status(200).json({
+      message: 'Fichier sauvegardé avec succès',
+      file: {
+        filename: req.file.filename,
+        originalName: req.file.originalname,
+        size: req.file.size,
+        path: filePath,
+        mimetype: req.file.mimetype
+      }
+    });
+  } catch (err) {
+    console.error('Erreur saveFile:', err);
+    res.status(500).json({ message: err.message });
+  }
+}

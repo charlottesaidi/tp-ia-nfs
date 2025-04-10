@@ -7,15 +7,16 @@ export default function App() {
   return (
     <Router>
       <div className="app">
-        <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <h2>📷 Analyse d'image IA</h2>
-            <div>
+        <header className="app-header">
+          <h1>📷 Analyse d'image IA</h1>
+          <nav>
+            <ul>
               <Link to="/" style={{ marginRight: '10px', color: '#fff' }}>Accueil</Link>
               <Link to="/history" style={{ color: '#fff' }}>Historique</Link>
-            </div>
-          </div>
-          
+            </ul>
+          </nav>
+        </header>
+        <div className="container">
           <Routes>
             <Route path="/" element={<ImageAnalyzer />} />
             <Route path="/history" element={<HistoryPage />} />

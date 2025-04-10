@@ -7,6 +7,7 @@ const analysisSchema = new mongoose.Schema({
     confidence: Number,
     className: String
   },
+  filepath: String,
   createdAt: {
     type: Date,
     default: Date.now

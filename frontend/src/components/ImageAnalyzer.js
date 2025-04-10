@@ -6,16 +6,17 @@ import axios from 'axios';
 
 const ImageAnalyzer = () => {
   const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [confidence, setConfidence] = useState(null);
-  const navigate = useNavigate();
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
+  const handleImageChange = async (e) => {
+    const uploadeFile = e.target.files[0];
+    if (uploadeFile) {
+      setImage(URL.createObjectURL(uploadeFile));
       setResult(null);
       setConfidence(null);
+      setFile(uploadeFile);
     }
   };
 
@@ -30,6 +31,12 @@ const ImageAnalyzer = () => {
       const src = img.getAttribute('src').split('/');
       const imageName = src[src.length -1];
 
+      const formData = new FormData();
+      formData.append('image', file);
+
+      // Envoi du fichier vers l'API du serveur
+      const uploadResponse = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, formData)
+
       const data = {
         analyse: {
           confidence: predictions[0].probability,
@@ -37,6 +44,7 @@ const ImageAnalyzer = () => {
         },
         imageName: imageName,
         imageSize: 0,
+        filepath: uploadResponse.data.file.path,
         createdAt: Date.now,
       }
 
