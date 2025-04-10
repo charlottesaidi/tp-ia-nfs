@@ -3,8 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const router = express.Router();
-const { saveAnalysis } = require('../controllers/analyzeController');
-const { saveFile } = require('../controllers/analyzeController');
+const { saveAnalysis, getLeaderboard, saveFile } = require('../controllers/analyzeController');
 
 // Configuration multer pour cette route spécifique
 const storage = multer.diskStorage({
@@ -36,5 +35,6 @@ const storage = multer.diskStorage({
 
 router.post('/analyze', saveAnalysis);
 router.post('/upload', upload.single('image'), saveFile);
+router.get('/leaderboard', getLeaderboard);
 
 module.exports = router;

@@ -1,26 +1,73 @@
 const Analysis = require('../models/Analysis');
 
+// controllers/analyzeController.js (version corrigée)
+
+// Map des catégories générales et expressions associées
+const categoryMapping = {
+  "Animal": ["cat", "dog", "bird", "fish", "tiger", "lion", "wolf", "bear", "fox", "elephant", "penguin"],
+  "Humain": ["person", "human", "man", "woman", "child", "baby", "face"],
+  "Personnage fictif": ["cartoon", "anime", "character", "superhero", "fictional"],
+  "Plante": ["plant", "tree", "flower", "vegetation", "leaf", "herb", "grass"],
+  "Véhicule": ["car", "truck", "vehicle", "automobile", "motorcycle", "bike", "bicycle", "bus", "train"]
+};
+
+// Fonction pour déterminer la catégorie générale d'une classe spécifique
+const determineGeneralCategory = (className) => {
+  className = className.toLowerCase();
+  
+  for (const [category, keywords] of Object.entries(categoryMapping)) {
+    for (const keyword of keywords) {
+      if (className.includes(keyword)) {
+        return category;
+      }
+    }
+  }
+  
+  return null; // Catégorie inconnue
+};
+
 exports.saveAnalysis = async (req, res) => {
   try {
-    const { analyse, imageName, imageSize, filepath, createdAt } = req.body;
+    const { analyse, imageName, imageSize, filepath, createdAt, userGuess, confusionScore } = req.body;
 
     if (!analyse) {
       return res.status(400).json({ error: 'Champs manquants dans la requête' });
     }
 
     const newAnalysis = new Analysis({
-      analyse, 
-      imageName, 
-      imageSize, 
+      analyse,
+      imageName,
+      imageSize,
       filepath,
-      createdAt
+      createdAt,
+      userGuess,
+      confusionScore,
+      isChallenge: true
     });
 
     const saved = await newAnalysis.save();
-    res.status(201).json({ message: 'Analyse enregistrée avec succès', analysis: saved });
+    res.status(201).json({ 
+      message: 'Analyse enregistrée avec succès', 
+      analysis: saved,
+      confusionScore 
+    });
   } catch (err) {
     console.error('Erreur saveAnalysis:', err);
     res.status(500).json({ error: 'Erreur serveur' });
+  }
+};
+
+// Nouvelle route pour obtenir le classement
+exports.getLeaderboard = async (req, res) => {
+  try {
+    const leaderboard = await Analysis.find({ isChallenge: true })
+      .sort({ confusionScore: -1 })
+      .limit(10);
+    
+    res.status(200).json(leaderboard);
+  } catch (err) {
+    console.error('Erreur getLeaderboard:', err);
+    res.status(500).json({ error: 'Erreur lors de la récupération du classement' });
   }
 };
 
