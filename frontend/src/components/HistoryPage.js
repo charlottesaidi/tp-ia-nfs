@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
-export default function HistoryPage() {
+const HistoryPage = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,7 +42,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <div className="container">
+    <div>
       <ToastContainer />
       <h2>📜 Historique des analyses</h2>
       <button onClick={() => navigate('/')}>Retour à l'accueil</button>
@@ -61,3 +61,4 @@ export default function HistoryPage() {
     </div>
   );
 }
+export default HistoryPage;
