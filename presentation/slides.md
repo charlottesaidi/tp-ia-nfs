@@ -451,7 +451,7 @@ layout: center
       </li>
       <li class="flex items-start">
         <div class="text-red-400 mt-0.5 mr-1">⚠️</div>
-        <div>Gestion des formats incompatibles</div>
+        <div>Classes et catégories pour le petit jeu</div>
       </li>
     </ul>
   </div>
@@ -502,51 +502,6 @@ layout: center
     </div>
   </div>
 </div>
-</div>
-
----
-layout: center
-class: "text-center"
----
-
-# Améliorations futures
-
-<div class="grid grid-cols-3 gap-8 mt-10">
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">📷</div>
-    <h3 class="text-xl font-bold mb-2">Support Webcam</h3>
-    <p class="text-sm opacity-80">Analyse d'images en direct depuis la caméra</p>
-  </div>
-  
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">🔍</div>
-    <h3 class="text-xl font-bold mb-2">Détection multi-objets</h3>
-    <p class="text-sm opacity-80">Identifier plusieurs éléments dans une même image</p>
-  </div>
-  
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">📊</div>
-    <h3 class="text-xl font-bold mb-2">Statistiques avancées</h3>
-    <p class="text-sm opacity-80">Visualisation des données d'analyse</p>
-  </div>
-  
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">📱</div>
-    <h3 class="text-xl font-bold mb-2">Application mobile</h3>
-    <p class="text-sm opacity-80">Version native pour iOS et Android</p>
-  </div>
-  
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">🔄</div>
-    <h3 class="text-xl font-bold mb-2">Fine-tuning</h3>
-    <p class="text-sm opacity-80">Adaptation du modèle à des domaines spécifiques</p>
-  </div>
-  
-  <div class="p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-xl transform transition-all hover:scale-105">
-    <div class="text-4xl mb-4 mx-auto">🌐</div>
-    <h3 class="text-xl font-bold mb-2">API publique</h3>
-    <p class="text-sm opacity-80">Service de reconnaissance accessible via API</p>
-  </div>
 </div>
 
 ---
