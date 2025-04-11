@@ -128,13 +128,6 @@ layout: default
       <div class="text-sm opacity-75">Communication en temps réel</div>
     </div>
   </li>
-  <li class="flex items-start">
-    <div class="mt-1 mr-3 text-orange-400 text-xl">📝</div>
-    <div>
-      <div class="font-bold">Trello</div>
-      <div class="text-sm opacity-75">Suivi des tâches, méthodologie Agile</div>
-    </div>
-  </li>
 </ul>
 
 </div>
@@ -147,8 +140,8 @@ layout: default
   <li class="flex items-start">
     <div class="mt-1 mr-3 text-orange-400 text-xl">🔄</div>
     <div>
-      <div class="font-bold">Sprints hebdomadaires</div>
-      <div class="text-sm opacity-75">Organisation Agile avec des cycles courts</div>
+      <div class="font-bold">Répartition des tâches</div>
+      <div class="text-sm opacity-75">Division du travail sur 2 jours suivie d'une mise en commun</div>
     </div>
   </li>
   <li class="flex items-start">
@@ -161,8 +154,8 @@ layout: default
   <li class="flex items-start">
     <div class="mt-1 mr-3 text-orange-400 text-xl">🔍</div>
     <div>
-      <div class="font-bold">Tests</div>
-      <div class="text-sm opacity-75">Tests unitaires et d'intégration</div>
+      <div class="font-bold">Tests Utilisateurs</div>
+      <div class="text-sm opacity-75">Vérification des fonctionnalités implémentées par les autres membres de l'équipe</div>
     </div>
   </li>
 </ul>
@@ -319,7 +312,7 @@ layout: two-cols
   <h3 class="text-xl font-bold mb-2 text-orange-400">Architecture CNN</h3>
   
   <div class="bg-gray-700 rounded-lg p-3 mb-4">
-    <img src="https://developers.google.com/static/machine-learning/crash-course/images/ConvolutionalNeuralNetworkCells.png" class="rounded-lg shadow-xl mb-4 w-full h-auto" />
+    <img src="./archi_cnn.png" class="rounded-lg shadow-xl mb-4 w-full h-auto" />
   </div>
   
   <div class="bg-gray-800 p-3 rounded-lg">
@@ -339,8 +332,7 @@ layout: two-cols
 </div>
 
 ---
-layout: image-right
-image: https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2019/08/01/cnn-layers.jpg
+layout: center
 ---
 
 # Fonctionnement détaillé
